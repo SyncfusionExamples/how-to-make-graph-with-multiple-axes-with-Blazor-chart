@@ -1,0 +1,46 @@
+﻿@page "/"
+
+
+@using Syncfusion.Blazor.Charts
+
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" Interval="1" IntervalType="IntervalType.Months">
+        <ChartAxisMajorGridLines Width="0" />
+        <ChartAxisMinorGridLines Width="0" />
+    </ChartPrimaryXAxis>
+    <ChartPrimaryYAxis>
+        <ChartAxisMajorGridLines Width="0" />
+        <ChartAxisMinorGridLines Width="0" />
+    </ChartPrimaryYAxis>
+    <ChartAxes>
+        <ChartAxis Name="YAxis" OpposedPosition="true" Interval="10" Minimum="10" Maximum="50" />
+    </ChartAxes>
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@WeatherReports" XName="Month" YName="Product1" Type="ChartSeriesType.Spline" Fill="blue">
+        </ChartSeries>
+        <ChartSeries DataSource="@WeatherReports" XName="Month" YName="Product2" Type="ChartSeriesType.Spline" Fill="pink" YAxisName="YAxis">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+
+    public class Chart
+    {
+        public DateTime Month { get; set; }
+        public double Product1 { get; set; }
+        public double Product2 { get; set; }
+    }
+
+    public List<Chart> WeatherReports = new List<Chart>
+    {
+        new Chart { Month = new DateTime(2005, 01, 01), Product1 = 21, Product2 = 26 },
+        new Chart { Month = new DateTime(2005, 02, 01), Product1 = 24, Product2 = 20 },
+        new Chart { Month = new DateTime(2005, 03, 01), Product1 = 36, Product2 = 30 },
+        new Chart { Month = new DateTime(2005, 04, 01), Product1 = 30, Product2 = 40 },
+        new Chart { Month = new DateTime(2005, 05, 01), Product1 = 25, Product2 = 35 },
+        new Chart { Month = new DateTime(2005, 06, 01), Product1 = 20, Product2 = 30 },
+        new Chart { Month = new DateTime(2005, 07, 01), Product1 = 40, Product2 = 20 },
+        new Chart { Month = new DateTime(2005, 08, 01), Product1 = 35, Product2 = 45 },
+    };
+}
