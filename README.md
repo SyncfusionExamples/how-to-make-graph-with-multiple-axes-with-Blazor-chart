@@ -2,13 +2,15 @@
 
 This article explains how to add multiple Y axis in [Blazor Chart](https://www.syncfusion.com/blazor-components/blazor-charts) . Blazor chart provide a support to use multiple axis at a time by using [ChartAxes](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartAxes.html).
 
+**Blazor chart with multiple Y axis**
+
 The [ChartAxes](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartAxes.html) is a secondary axis collection that can be used to add “n” number of axes to the chart in addition to the basic X and Y axis. By mapping with the axis unique name, series can be linked to it.
 
 **C#**
 
 ```cshtml
 
-<ChartAxes> <ChartAxis Name="YAxis" OpposedPosition="true"/> </ChartAxes>
+<ChartAxes> <ChartAxis Name="YAxis" OpposedPosition="true"/></ChartAxes>
 
 ```
 
@@ -21,23 +23,28 @@ The Following code snippet illustrate the how to add the Y-axis  property in cha
 @using Syncfusion.Blazor.Charts
 
 <SfChart>
+
     <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" Interval="1" IntervalType="IntervalType.Months">
         <ChartAxisMajorGridLines Width="0" />
         <ChartAxisMinorGridLines Width="0" />
     </ChartPrimaryXAxis>
+
     <ChartPrimaryYAxis>
         <ChartAxisMajorGridLines Width="0" />
         <ChartAxisMinorGridLines Width="0" />
     </ChartPrimaryYAxis>
+
     <ChartAxes>
         <ChartAxis Name="YAxis" OpposedPosition="true" Interval="10" Minimum="10" Maximum="50"/>
     </ChartAxes>
+
     <ChartSeriesCollection>
         <ChartSeries DataSource="@WeatherReports" XName="Month" YName="Product1" Type="ChartSeriesType.Spline" Fill="blue">
         </ChartSeries>
         <ChartSeries DataSource="@WeatherReports" XName="Month" YName="Product2" Type="ChartSeriesType.Spline" Fill="pink" YAxisName="YAxis" >
         </ChartSeries>
     </ChartSeriesCollection>
+
 </SfChart>
 
 @code {
@@ -78,11 +85,4 @@ You can refer to our [Blazor Chart feature tour](https://www.syncfusion.com/blaz
 
 For current customers, you can check out our components from the [License and Downloads](https://www.syncfusion.com/sales/teamlicense) page. If you are new to Syncfusion, you can try our 30-day [free trial](https://www.syncfusion.com/downloads/blazor) to check out our other controls.
 
-If you have any queries or require clarifications, please let us know in the comments section below. You can also contact us through our [support forums](https://www.syncfusion.com/forums), [Direct-Trac](https://support.syncfusion.com/create), or [feedback portal](https://www.syncfusion.com/feedback/blazor-components?control=charts). We are always happy to assist you!
-
-
-
-
-
-
- 
+If you have any queries or require clarifications, please let us know in the comments section below. You can also contact us through our [support forums](https://www.syncfusion.com/forums), [support portal](https://support.syncfusion.com/create), or [feedback portal](https://www.syncfusion.com/feedback/blazor-components?control=charts). We are always happy to assist you!
