@@ -8,7 +8,7 @@ Blazor chart provide a support to use multiple axis at a time by using [ChartAxe
 
 The [ChartAxes](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartAxes.html) is a secondary axis collection that can be used to add “n” number of axes to the chart in addition to the basic X and Y axis. By mapping with the axis unique name, series can be linked to it.
 
-In the below code example, the two series are linked together by using `Name` property of [ChartAxes](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartAxes.html) by providing same name for `YAxisName` property.
+In the below code example, the series and axis are linked together by using [Name](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartAxis.html#Syncfusion_Blazor_Charts_ChartAxis_Name) property of [ChartAxis](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartAxis.html) by providing same name for [YAxisName](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartSeries.html#Syncfusion_Blazor_Charts_ChartSeries_YAxisName) property. 
 
 ```cshtml
 
