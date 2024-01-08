@@ -1,22 +1,30 @@
 # How-to-make-graph-with-multiple-axes-with-Blazor-chart
 
-This article explains how to add multiple Y axis in [Blazor Chart](https://www.syncfusion.com/blazor-components/blazor-charts) . Blazor chart provide a support to use multiple axis at a time by using [ChartAxes](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartAxes.html).
+This article explains how to add multiple Y axis in [Blazor Chart](https://www.syncfusion.com/blazor-components/blazor-charts) . 
 
 **Blazor chart with multiple Y axis**
 
+Blazor chart provide a support to use multiple axis at a time by using [ChartAxes](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartAxes.html).
+
 The [ChartAxes](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartAxes.html) is a secondary axis collection that can be used to add “n” number of axes to the chart in addition to the basic X and Y axis. By mapping with the axis unique name, series can be linked to it.
 
-**C#**
+In the below code example, the series and axis are linked together by using [Name](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartAxis.html#Syncfusion_Blazor_Charts_ChartAxis_Name) property of [ChartAxis](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartAxis.html) by providing same name for [YAxisName](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartSeries.html#Syncfusion_Blazor_Charts_ChartSeries_YAxisName) property. 
 
 ```cshtml
 
 <ChartAxes> <ChartAxis Name="YAxis" OpposedPosition="true"/></ChartAxes>
+ <ChartSeriesCollection>
+    <ChartSeries DataSource="@WeatherReports" XName="Month" YName="Product1" Type="ChartSeriesType.Spline" Fill="blue">
+    </ChartSeries>
+    <ChartSeries DataSource="@WeatherReports" XName="Month" YName="Product2" Type="ChartSeriesType.Spline" Fill="pink" YAxisName="YAxis">
+    </ChartSeries>
+</ChartSeriesCollection>
 
 ```
 
-The Following code snippet illustrate the how to add the Y-axis  property in chart series.
+The following code snippet illustrates the how to create graph with multiple Y axis.
 
-**C#**
+**Index.razor**
 
 ```cshtml
 
@@ -25,13 +33,13 @@ The Following code snippet illustrate the how to add the Y-axis  property in cha
 <SfChart>
 
     <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" Interval="1" IntervalType="IntervalType.Months">
-        <ChartAxisMajorGridLines Width="0" />
-        <ChartAxisMinorGridLines Width="0" />
+        <ChartAxisMajorGridLines Width="0"/>
+        <ChartAxisMinorGridLines Width="0"/>
     </ChartPrimaryXAxis>
 
     <ChartPrimaryYAxis>
-        <ChartAxisMajorGridLines Width="0" />
-        <ChartAxisMinorGridLines Width="0" />
+        <ChartAxisMajorGridLines Width="0"/>
+        <ChartAxisMinorGridLines Width="0"/>
     </ChartPrimaryYAxis>
 
     <ChartAxes>
@@ -41,7 +49,7 @@ The Following code snippet illustrate the how to add the Y-axis  property in cha
     <ChartSeriesCollection>
         <ChartSeries DataSource="@WeatherReports" XName="Month" YName="Product1" Type="ChartSeriesType.Spline" Fill="blue">
         </ChartSeries>
-        <ChartSeries DataSource="@WeatherReports" XName="Month" YName="Product2" Type="ChartSeriesType.Spline" Fill="pink" YAxisName="YAxis" >
+        <ChartSeries DataSource="@WeatherReports" XName="Month" YName="Product2" Type="ChartSeriesType.Spline" Fill="pink" YAxisName="YAxis">
         </ChartSeries>
     </ChartSeriesCollection>
 
@@ -71,7 +79,7 @@ The Following code snippet illustrate the how to add the Y-axis  property in cha
 
 ```
 
-The following screenshot illustrate the output of the above code snippet.
+The following screenshot illustrates the output of the above code snippet.
 
 **Output:**
 
