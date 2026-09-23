@@ -1,96 +1,84 @@
-# How-to-make-graph-with-multiple-axes-with-Blazor-chart
+# Multiple Y-Axes in Syncfusion Blazor Chart
 
-This article explains how to add multiple Y axis in [Blazor Chart](https://www.syncfusion.com/blazor-components/blazor-charts) . 
+## Overview
 
-**Blazor chart with multiple Y axis**
+This sample demonstrates how to configure multiple Y-axes in a Syncfusion [Blazor Charts](https://www.syncfusion.com/blazor-components/blazor-charts) component. The implementation adds a secondary axis through the `ChartAxes` collection and maps an individual series to that axis using the `YAxisName` property.
 
-Blazor chart provide a support to use multiple axis at a time by using [ChartAxes](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartAxes.html).
+This approach is useful when multiple datasets must be displayed within the same chart area while maintaining separate axis scales. The sample uses two spline series and a DateTime-based X-axis to illustrate axis-to-series mapping.
 
-The [ChartAxes](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartAxes.html) is a secondary axis collection that can be used to add “n” number of axes to the chart in addition to the basic X and Y axis. By mapping with the axis unique name, series can be linked to it.
+## Key Features
 
-In the below code example, the series and axis are linked together by using [Name](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartAxis.html#Syncfusion_Blazor_Charts_ChartAxis_Name) property of [ChartAxis](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartAxis.html) by providing same name for [YAxisName](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartSeries.html#Syncfusion_Blazor_Charts_ChartSeries_YAxisName) property. 
+- Uses the `SfChart` component to render chart data.
+- Configures a DateTime X-axis through `ChartPrimaryXAxis`.
+- Defines the default Y-axis with `ChartPrimaryYAxis`.
+- Adds a secondary Y-axis using the `ChartAxes` collection.
+- Configures a secondary `ChartAxis` with:
+  - `Name="YAxis"`
+  - `OpposedPosition="true"`
+  - `Interval`
+  - `Minimum`
+  - `Maximum`
+- Renders two spline series using `ChartSeries`.
+- Binds data through the `DataSource` property.
+- Maps data fields through:
+  - `XName`
+  - `YName`
+- Associates a series with the secondary Y-axis through the `YAxisName` property.
+- Removes major and minor gridlines using:
+  - `ChartAxisMajorGridLines`
+  - `ChartAxisMinorGridLines`
 
-```cshtml
+## Prerequisites
 
-<ChartAxes> <ChartAxis Name="YAxis" OpposedPosition="true"/></ChartAxes>
- <ChartSeriesCollection>
-    <ChartSeries DataSource="@WeatherReports" XName="Month" YName="Product1" Type="ChartSeriesType.Spline" Fill="blue">
-    </ChartSeries>
-    <ChartSeries DataSource="@WeatherReports" XName="Month" YName="Product2" Type="ChartSeriesType.Spline" Fill="pink" YAxisName="YAxis">
-    </ChartSeries>
-</ChartSeriesCollection>
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/)
+- [.NET SDK](https://dotnet.microsoft.com/en-us/download/dotnet) compatible with the project's target framework
 
+## How to Run the Project
+
+**Visual Studio 2022**
+
+1. Clone or download the repository.
+2. Open the project file:
+   `MultipleAxisInBlazorChart/MultipleAxisInBlazorChart.csproj`
+3. Restore NuGet packages.
+4. Build the project.
+5. Run the application using `Ctrl+F5`.
+
+**Visual Studio Code**
+
+1. Clone or download the repository.
+2. Open the repository folder in Visual Studio Code.
+3. Open the integrated terminal.
+4. Navigate to the project folder.
+
+```bash
+cd MultipleAxisInBlazorChart
 ```
 
-The following code snippet illustrates the how to create graph with multiple Y axis.
+5. Restore NuGet packages:
 
-**Index.razor**
-
-```cshtml
-
-@using Syncfusion.Blazor.Charts
-
-<SfChart>
-
-    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" Interval="1" IntervalType="IntervalType.Months">
-        <ChartAxisMajorGridLines Width="0"/>
-        <ChartAxisMinorGridLines Width="0"/>
-    </ChartPrimaryXAxis>
-
-    <ChartPrimaryYAxis>
-        <ChartAxisMajorGridLines Width="0"/>
-        <ChartAxisMinorGridLines Width="0"/>
-    </ChartPrimaryYAxis>
-
-    <ChartAxes>
-        <ChartAxis Name="YAxis" OpposedPosition="true" Interval="10" Minimum="10" Maximum="50"/>
-    </ChartAxes>
-
-    <ChartSeriesCollection>
-        <ChartSeries DataSource="@WeatherReports" XName="Month" YName="Product1" Type="ChartSeriesType.Spline" Fill="blue">
-        </ChartSeries>
-        <ChartSeries DataSource="@WeatherReports" XName="Month" YName="Product2" Type="ChartSeriesType.Spline" Fill="pink" YAxisName="YAxis">
-        </ChartSeries>
-    </ChartSeriesCollection>
-
-</SfChart>
-
-@code {
-
-    public class Chart
-    {
-        public DateTime Month { get; set; }
-        public double Product1 { get; set; }
-        public double Product2 { get; set; }
-    }
-
-    public List<Chart> WeatherReports = new List<Chart>
-    {
-        new Chart { Month = new DateTime(2005, 01, 01), Product1 = 21, Product2 = 26 },
-        new Chart { Month = new DateTime(2005, 02, 01), Product1 = 24, Product2 = 20 },
-        new Chart { Month = new DateTime(2005, 03, 01), Product1 = 36, Product2 = 30 },
-        new Chart { Month = new DateTime(2005, 04, 01), Product1 = 30, Product2 = 40 },
-        new Chart { Month = new DateTime(2005, 05, 01), Product1 = 25, Product2 = 35 },
-        new Chart { Month = new DateTime(2005, 06, 01), Product1 = 20, Product2 = 30 },
-        new Chart { Month = new DateTime(2005, 07, 01), Product1 = 40, Product2 = 20 },
-        new Chart { Month = new DateTime(2005, 08, 01), Product1 = 35, Product2 = 45 },
-    };
-}
-
+```bash
+dotnet restore
 ```
 
-The following screenshot illustrates the output of the above code snippet.
+6. Run the application:
 
-**Output:**
+```bash
+dotnet run
+```
 
-![](/blazor-chart-with-multiple-y-axis.png)
+7. Open the local URL displayed in the console output.
 
-**Conclusion**
+## Project Structure
 
-I hope you enjoyed learning how to add multiple Y axis in Blazor Chart Component.
+`MultipleAxisInBlazorChart/Pages/Index.razor` - Implements the multiple-axis chart sample using `SfChart`, `ChartAxes`, `ChartAxis`, and `ChartSeries`.
 
-You can refer to our [Blazor Chart feature tour](https://www.syncfusion.com/blazor-components/blazor-charts) page to know about its other groundbreaking feature representations and [documentation](https://blazor.syncfusion.com/documentation/chart/getting-started), and how to quickly get started for configuration specifications. You can also explore our [Blazor Chart example](https://blazor.syncfusion.com/demos/chart/line?theme=bootstrap5) to understand how to create and manipulate data.
+## Support and Feedback
 
-For current customers, you can check out our components from the [License and Downloads](https://www.syncfusion.com/sales/teamlicense) page. If you are new to Syncfusion, you can try our 30-day [free trial](https://www.syncfusion.com/downloads/blazor) to check out our other controls.
+- For general product questions, visit the [Syncfusion Community Forum](https://www.syncfusion.com/forums) or [Syncfusion Support](https://www.syncfusion.com/support).
+- To report an issue specific to this sample, open a GitHub issue in this repository.
+- Refer to the official Syncfusion Chart documentation: https://help.syncfusion.com/chart-sdk/blazor/charts/getting-started
 
-If you have any queries or require clarifications, please let us know in the comments section below. You can also contact us through our [support forums](https://www.syncfusion.com/forums), [support portal](https://support.syncfusion.com/create), or [feedback portal](https://www.syncfusion.com/feedback/blazor-components?control=charts). We are always happy to assist you!
+## License
+
+This is a Syncfusion sample project provided to demonstrate product usage. Review the [Syncfusion license terms](https://www.syncfusion.com/sales/pricing?category=ui-components) before using Syncfusion components in your own applications.
