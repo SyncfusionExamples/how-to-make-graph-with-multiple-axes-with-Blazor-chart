@@ -1,4 +1,4 @@
-﻿@page "/"
+@page "/"
 
 
 @using Syncfusion.Blazor.Charts
@@ -34,13 +34,13 @@
 
     public List<Chart> WeatherReports = new List<Chart>
     {
-        new Chart { Month = new DateTime(2005, 01, 01), Product1 = 21, Product2 = 26 },
-        new Chart { Month = new DateTime(2005, 02, 01), Product1 = 24, Product2 = 20 },
-        new Chart { Month = new DateTime(2005, 03, 01), Product1 = 36, Product2 = 30 },
-        new Chart { Month = new DateTime(2005, 04, 01), Product1 = 30, Product2 = 40 },
-        new Chart { Month = new DateTime(2005, 05, 01), Product1 = 25, Product2 = 35 },
-        new Chart { Month = new DateTime(2005, 06, 01), Product1 = 20, Product2 = 30 },
-        new Chart { Month = new DateTime(2005, 07, 01), Product1 = 40, Product2 = 20 },
-        new Chart { Month = new DateTime(2005, 08, 01), Product1 = 35, Product2 = 45 },
+        new Chart { Month = new DateTime(DateTime.Now.Year, 01, 01), Product1 = 21, Product2 = 26 },
+        new Chart { Month = new DateTime(DateTime.Now.Year, 02, 01), Product1 = 24, Product2 = 20 },
+        new Chart { Month = new DateTime(DateTime.Now.Year, 03, 01), Product1 = 36, Product2 = 30 },
+        new Chart { Month = new DateTime(DateTime.Now.Year, 04, 01), Product1 = 30, Product2 = 40 },
+        new Chart { Month = new DateTime(DateTime.Now.Year, 05, 01), Product1 = 25, Product2 = 35 },
+        new Chart { Month = new DateTime(DateTime.Now.Year, 06, 01), Product1 = 20, Product2 = 30 },
+        new Chart { Month = new DateTime(DateTime.Now.Year, 07, 01), Product1 = 40, Product2 = 20 },
+        new Chart { Month = new DateTime(DateTime.Now.Year, 08, 01), Product1 = 35, Product2 = 45 },
     };
 }
